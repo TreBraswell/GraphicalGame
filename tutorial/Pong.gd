@@ -6,6 +6,8 @@ var direction = Vector2(1.0,0.0)
 var p1Score = 0
 var p2Score = 0
 
+var INITIAL_PLAYER_SPEED = 80
+var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 const PAD_SPEED = 150
 var ball_speed = INTIAL_BALL_SPEED
@@ -34,9 +36,13 @@ func _process(delta):
 	ball_pos += (direction*ball_speed*delta)
 	var left_pos = get_node("leftpaddle").position
 	if(left_pos.y>0 and Input.is_action_pressed("left_move_up")):
-		left_pos.y += -PAD_SPEED *delta
+		left_pos.y += -PAD_SPEED * delta
 	if(left_pos.y<screen_size.y and Input.is_action_pressed("left_move_down")):
 		left_pos.y += PAD_SPEED * delta
+	if(left_pos.x>0 and Input.is_action_pressed("left_move_left")):
+		left_pos.x += -PAD_SPEED * delta
+	if(left_pos.x<screen_size.x and Input.is_action_pressed("left_move_right")):
+		left_pos.x += PAD_SPEED * delta
 	get_node("leftpaddle").set_position(left_pos)
 	
 	var right_pos = get_node("rightpaddle").position
