@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Pong Remake Assets/hand-nodules@3x_1113x1020.png" type="Texture" id=3]
+[ext_resource path="res://Pong Remake Assets/separator.png" type="Texture" id=4]
+[ext_resource path="res://Pong.gd" type="Script" id=5]
+[ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="pong_game (root)" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Ball" type="Sprite" parent="."]
+position = Vector2( 379.965, 220.292 )
+scale = Vector2( 0.0498451, 0.0401276 )
+
+[node name="leftpaddle" type="Sprite" parent="."]
+position = Vector2( 110.716, 191.474 )
+scale = Vector2( 0.0303659, 0.0971161 )
+texture = ExtResource( 3 )
+
+[node name="rightpaddle" type="Sprite" parent="."]
+position = Vector2( 499.354, 185.9 )
+scale = Vector2( 0.0192661, 0.0855131 )
+texture = ExtResource( 3 )
+
+[node name="seperator" type="Sprite" parent="."]
+position = Vector2( 320, 200 )
+texture = ExtResource( 4 )
+
+[node name="P1 Score" type="RichTextLabel" parent="."]
+margin_right = 314.0
+margin_bottom = 40.0
+custom_fonts/normal_font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2 Score" type="RichTextLabel" parent="."]
+margin_left = 325.674
+margin_top = 2.58471
+margin_right = 635.674
+margin_bottom = 42.5847
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bounce" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
