@@ -6,10 +6,13 @@ var direction = Vector2(1.0,0.0)
 var p1Score = 0
 var p2Score = 0
 var candynum = 0
+var DisplayValue = 50
+onready var timer = get_node("Timer")
 var INITIAL_PLAYER_SPEED = 80
 var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
+var waittime = 30
 var ball_speed = INTIAL_BALL_SPEED
 
 var bounceSFX
@@ -24,86 +27,58 @@ func _ready():
 	pad_size = get_node("kid").get_texture().get_size()
 	bounceSFX = get_node("Bounce")
 	set_process(true)
-	pass # Replace with function body.
+	#pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	waittime = waittime -1
 	var bott_pos = get_node("bottle").position
 	#var ball_pos = get_node("Ball").position
 	var t = get_node("kid").position
-	var left_rect = Rect2(get_node("kid").position - pad_size*0.5, pad_size)
-	var right_rect = Rect2(get_node("rightpaddle").position - pad_size* 0.5, pad_size)
+	var ball_rect = Rect2(get_node("bottle").position,get_node("bottle").get_texture().get_size())
+	var left_rect = Rect2(get_node("kid").position- pad_size* 0.5, pad_size)
+	#var left_rect = Rect2(get_node("kid").position.x,get_node("kid").position.y, get_node("bottle").get_texture().get_size().x, get_node("bottle").get_texture().get_size().y)
+	#var right_rect = Rect2(get_node("rightpaddle").position - pad_size* 0.5, pad_size)
 	#ball_pos += (direction*ball_speed*delta)
 	var left_pos = get_node("kid").position
 	if(left_pos.y>0 and Input.is_action_pressed("left_move_up")):
 		left_pos.y += -PAD_SPEED * delta
-		if(left_rect.has_point(bott_pos)):
-			candynum+=1
-			PAD_SPEED+=100
-			bott_pos.x = randi()%int(screen_size.x) +1
-			bott_pos.y = randi()%int(screen_size.y) +1
-			get_node("bottle").set_position(bott_pos)
 	if(left_pos.y<screen_size.y and Input.is_action_pressed("left_move_down")):
 		left_pos.y += PAD_SPEED * delta
-		if(left_rect.has_point(bott_pos)):
-			candynum+=1
-			PAD_SPEED+=100
-			bott_pos.x = randi()%int(screen_size.x) +1
-			bott_pos.y = randi()%int(screen_size.y) +1
-			get_node("bottle").set_position(bott_pos)
 	if(left_pos.x>0 and Input.is_action_pressed("left_move_left")):
 		left_pos.x += -PAD_SPEED * delta
-		if(left_rect.has_point(bott_pos)):
-			candynum+=1
-			PAD_SPEED+=100
-			bott_pos.x = randi()%int(screen_size.x) +1
-			bott_pos.y = randi()%int(screen_size.y) +1
-			get_node("bottle").set_position(bott_pos)
 	if(left_pos.x<screen_size.x and Input.is_action_pressed("left_move_right")):
+		#if(left_pos.x< bott_pos.x and bott_pos.x<=left_pos.x + PAD_SPEED * delta and left_pos.y == bott_pos.y):
+		#	candynum+=1
+		#	PAD_SPEED+=100
+		#	DisplayValue+=10
+		#	bott_pos.x = randi()%int(screen_size.x) +1
+		#	bott_pos.y = randi()%int(screen_size.y) +1
+		#	get_node("bottle").set_position(bott_pos)
 		left_pos.x += PAD_SPEED * delta
-		if(left_rect.has_point(bott_pos)):
-			candynum+=1
-			PAD_SPEED+=100
-			bott_pos.x = randi()%int(screen_size.x) +1
-			bott_pos.y = randi()%int(screen_size.y) +1
-			get_node("bottle").set_position(bott_pos)
+		
 	get_node("kid").set_position(left_pos)
-	
-	var right_pos = get_node("rightpaddle").position
-	var right_size = get_node("rightpaddle").texture.get_size()
-	
-	#if(ball_pos.x <screen_size.x * 0.5):
-	#	right_pos.y = right_pos.y +(ball_pos.y - right_pos.y) *delta
-	#elif(ball_pos.x> screen_size.x *.5):
-	#	right_pos.y = right_pos.y + (ball_pos.y - right_pos.y)* 4 * delta
-	#get_node("rightpaddle").set_position(right_pos)
-	#var ball_size = get_node("Ball").texture.get_size()
-	#if(ball_pos.y<0 or (ball_pos.y> screen_size.y)):
-	#	direction.y *= -1
-	#	bounceSFX.play()
 	if(left_rect.has_point(bott_pos)):
 		candynum+=1
 		PAD_SPEED+=100
+		DisplayValue+=10
 		bott_pos.x = randi()%int(screen_size.x) +1
 		bott_pos.y = randi()%int(screen_size.y) +1
 		get_node("bottle").set_position(bott_pos)
-		#direction.y = randf() * 2.0 -1
-		#direction = direction.normalized()
-		#ball_speed *=1.1
-		#bounceSFX.play()
-	#if(ball_pos.x<0):
-	#	p2Score +=1
-	#	ball_pos = screen_size*.5
-	#	ball_speed =INTIAL_BALL_SPEED
-	#	direction = Vector2(-1,0)
-	#elif(ball_pos.x > screen_size.x):
-	#	p1Score +=1
-	#	ball_pos = screen_size * .5
-	#	ball_speed = INTIAL_BALL_SPEED
-	#	direction = Vector2(-1,0)
 	
-	#get_node("Ball").set_position(ball_pos)
 	get_node("candyscore").bbcode_text = str(candynum)
-	#get_node("P2 Score").bbcode_text = "[center]" +str(p2Score) +"[/center]"
+	get_node("Candytimer").bbcode_text =  str(DisplayValue)
+	if(waittime==0):
+		waittime=30;
+		DisplayValue+=-1;
 		
+		if(DisplayValue==0):
+			DisplayValue = 60
+		
+
+
+func _on_Timer_timeout():
+	DisplayValue+=-1;
+	waittime = 60
+	
