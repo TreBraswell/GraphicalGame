@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://bottle.gd" type="Script" id=1]
 [ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://bedroom.png" type="Texture" id=3]
+[ext_resource path="res://CherryPop.png" type="Texture" id=4]
 [ext_resource path="res://Pong.gd" type="Script" id=5]
 [ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
-[ext_resource path="res://Pong Remake Assets/bottle_cola (1).png" type="Texture" id=7]
 [ext_resource path="res://Pong Remake Assets/Kid.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
@@ -42,9 +43,9 @@ position = Vector2( 1.94803, 4.31969 )
 stream = ExtResource( 6 )
 
 [node name="bottle" type="Sprite" parent="."]
-position = Vector2( 421.498, 81.2977 )
-scale = Vector2( 0.0323352, 0.0367863 )
-texture = ExtResource( 7 )
+position = Vector2( 433.818, 63.8441 )
+scale = Vector2( 1.05902, 1.49126 )
+texture = ExtResource( 4 )
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -59,4 +60,10 @@ margin_bottom = 36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="bedroom" type="Sprite" parent="."]
+position = Vector2( 320.31, 205.398 )
+scale = Vector2( 2.01819, 2.07207 )
+z_index = -1
+texture = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
