@@ -44,20 +44,13 @@ func _process(delta):
 	#var right_rect = Rect2(get_node("rightpaddle").position - pad_size* 0.5, pad_size)
 	#ball_pos += (direction*ball_speed*delta)
 	var left_pos = get_node("kid").position
-	if(left_pos.y>0 and Input.is_action_pressed("left_move_up")):
+	if(Input.is_action_pressed("left_move_up")):
 		left_pos.y += -PAD_SPEED * delta
-	if(left_pos.y<screen_size.y and Input.is_action_pressed("left_move_down")):
+	if(Input.is_action_pressed("left_move_down")):
 		left_pos.y += PAD_SPEED * delta
-	if(left_pos.x>0 and Input.is_action_pressed("left_move_left")):
+	if(Input.is_action_pressed("left_move_left")):
 		left_pos.x += -PAD_SPEED * delta
-	if(left_pos.x<screen_size.x and Input.is_action_pressed("left_move_right")):
-		#if(left_pos.x< bott_pos.x and bott_pos.x<=left_pos.x + PAD_SPEED * delta and left_pos.y == bott_pos.y):
-		#	candynum+=1
-		#	PAD_SPEED+=100
-		#	DisplayValue+=10
-		#	bott_pos.x = randi()%int(screen_size.x) +1
-		#	bott_pos.y = randi()%int(screen_size.y) +1
-		#	get_node("bottle").set_position(bott_pos)
+	if(Input.is_action_pressed("left_move_right")):
 		left_pos.x += PAD_SPEED * delta
 		
 	get_node("kid").set_position(left_pos)

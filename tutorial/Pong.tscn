@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://bottle.gd" type="Script" id=1]
 [ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ScreenShake.gd" type="Script" id=7]
 [ext_resource path="res://Pong Remake Assets/Kid.png" type="Texture" id=8]
 [ext_resource path="res://trail.tscn" type="PackedScene" id=9]
+[ext_resource path="res://kid.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -30,11 +31,12 @@ __meta__ = {
 position = Vector2( 109.284, 71.9054 )
 scale = Vector2( 1.16164, 1.69205 )
 texture = ExtResource( 8 )
+script = ExtResource( 10 )
+wrapArea = Rect2( 0, 0, 1024, 600 )
 
 [node name="Line2D" parent="kid" instance=ExtResource( 9 )]
 points = PoolVector2Array( 0.494476, -4.05659 )
-trail_length = 1
-persistence = 2
+trail_length = 40
 
 [node name="candyscore" type="RichTextLabel" parent="."]
 margin_left = 323.708
@@ -46,7 +48,7 @@ __meta__ = {
 }
 
 [node name="Bounce" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 1.94803, 4.31969 )
+position = Vector2( 6.70807, 10.6664 )
 stream = ExtResource( 6 )
 
 [node name="bottle" type="Sprite" parent="."]
@@ -69,8 +71,8 @@ __meta__ = {
 }
 
 [node name="bedroom" type="Sprite" parent="."]
-position = Vector2( 330.581, 205.398 )
-scale = Vector2( 2.01819, 2.07207 )
+position = Vector2( 329.32, 215.062 )
+scale = Vector2( 1.98588, 2.0333 )
 z_index = -1
 texture = ExtResource( 3 )
 
@@ -89,7 +91,6 @@ one_shot = true
 
 [node name="maincamera" type="Camera2D" parent="ScreenShake"]
 position = Vector2( -3.87704, 2.5847 )
-scale = Vector2( 1, 1 )
 current = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="ScreenShake/Frequency" to="ScreenShake" method="_on_Frequency_timeout"]
