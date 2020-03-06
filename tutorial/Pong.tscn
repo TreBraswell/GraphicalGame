@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://bottle.gd" type="Script" id=1]
 [ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://CherryPop.png" type="Texture" id=4]
 [ext_resource path="res://Pong.gd" type="Script" id=5]
 [ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
+[ext_resource path="res://ScreenShake.gd" type="Script" id=7]
 [ext_resource path="res://Pong Remake Assets/Kid.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
@@ -13,11 +14,6 @@ font_data = ExtResource( 2 )
 
 [node name="pong_game (root)" type="Node2D"]
 script = ExtResource( 5 )
-
-[node name="kid" type="Sprite" parent="."]
-position = Vector2( 109.284, 71.9054 )
-scale = Vector2( 1.16164, 1.69205 )
-texture = ExtResource( 8 )
 
 [node name="Candytimer" type="RichTextLabel" parent="."]
 margin_left = 47.3867
@@ -28,6 +24,11 @@ custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="kid" type="Sprite" parent="."]
+position = Vector2( 109.284, 71.9054 )
+scale = Vector2( 1.16164, 1.69205 )
+texture = ExtResource( 8 )
 
 [node name="candyscore" type="RichTextLabel" parent="."]
 margin_left = 323.708
@@ -62,8 +63,28 @@ __meta__ = {
 }
 
 [node name="bedroom" type="Sprite" parent="."]
-position = Vector2( 320.31, 205.398 )
+position = Vector2( 330.581, 205.398 )
 scale = Vector2( 2.01819, 2.07207 )
 z_index = -1
 texture = ExtResource( 3 )
+
+[node name="ScreenShake" type="Node2D" parent="."]
+position = Vector2( 328.058, 205.487 )
+script = ExtResource( 7 )
+
+[node name="ShakeTween" type="Tween" parent="ScreenShake"]
+
+[node name="Frequency" type="Timer" parent="ScreenShake"]
+wait_time = 1.244
+
+[node name="Duration" type="Timer" parent="ScreenShake"]
+wait_time = 0.497
+one_shot = true
+
+[node name="maincamera" type="Camera2D" parent="ScreenShake"]
+position = Vector2( -3.87704, 2.5847 )
+scale = Vector2( 1, 1 )
+current = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ScreenShake/Frequency" to="ScreenShake" method="_on_Frequency_timeout"]
+[connection signal="timeout" from="ScreenShake/Duration" to="ScreenShake" method="_on_Duration_timeout"]

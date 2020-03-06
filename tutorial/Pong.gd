@@ -15,6 +15,7 @@ var PAD_SPEED = 150
 var waittime = 30
 var ball_speed = INTIAL_BALL_SPEED
 
+
 var bounceSFX
 # Declare member variables here. Examples:
 # var a = 2
@@ -23,6 +24,7 @@ var bounceSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("this is a test")
 	screen_size = get_viewport_rect().size
 	pad_size = get_node("kid").get_texture().get_size()
 	bounceSFX = get_node("Bounce")
@@ -32,6 +34,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print("this is a test")
 	waittime = waittime -1
 	var bott_pos = get_node("bottle").position
 	#var ball_pos = get_node("Ball").position
@@ -60,6 +63,8 @@ func _process(delta):
 		
 	get_node("kid").set_position(left_pos)
 	if(left_rect.has_point(bott_pos)):
+		get_node("ScreenShake").start()
+		print_debug("hf")
 		candynum+=1
 		PAD_SPEED+=100
 		DisplayValue+=10
