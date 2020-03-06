@@ -24,7 +24,6 @@ var bounceSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("this is a test")
 	screen_size = get_viewport_rect().size
 	pad_size = get_node("kid").get_texture().get_size()
 	bounceSFX = get_node("Bounce")
@@ -34,7 +33,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print("this is a test")
+	
 	waittime = waittime -1
 	var bott_pos = get_node("bottle").position
 	#var ball_pos = get_node("Ball").position

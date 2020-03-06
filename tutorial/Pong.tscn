@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://bottle.gd" type="Script" id=1]
 [ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
 [ext_resource path="res://ScreenShake.gd" type="Script" id=7]
 [ext_resource path="res://Pong Remake Assets/Kid.png" type="Texture" id=8]
+[ext_resource path="res://trail.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -29,6 +30,11 @@ __meta__ = {
 position = Vector2( 109.284, 71.9054 )
 scale = Vector2( 1.16164, 1.69205 )
 texture = ExtResource( 8 )
+
+[node name="Line2D" parent="kid" instance=ExtResource( 9 )]
+points = PoolVector2Array( 0.494476, -4.05659 )
+trail_length = 1
+persistence = 2
 
 [node name="candyscore" type="RichTextLabel" parent="."]
 margin_left = 323.708

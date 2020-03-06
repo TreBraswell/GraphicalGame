@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://trail.gd" type="Script" id=1]
+
+[node name="trail" type="Line2D"]
+points = PoolVector2Array( -196.682, -53.7459 )
+script = ExtResource( 1 )
