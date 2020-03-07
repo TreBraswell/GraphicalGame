@@ -14,8 +14,9 @@ var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
 var waittime = 30
 var ball_speed = INTIAL_BALL_SPEED
-
-
+var temptimer =0
+onready var temp = get_node("explosive")
+var ex = false
 var bounceSFX
 # Declare member variables here. Examples:
 # var a = 2
@@ -33,7 +34,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if(temptimer-2>DisplayValue and ex == true):
+			ex = false
+			temp.set_position(get_node("bottle").position)
+			temp.emitting = true
 	waittime = waittime -1
 	var bott_pos = get_node("bottle").position
 	#var ball_pos = get_node("Ball").position
@@ -56,14 +60,19 @@ func _process(delta):
 	get_node("kid").set_position(left_pos)
 	if(left_rect.has_point(bott_pos)):
 		get_node("ScreenShake").start()
-		print_debug("hf")
+		update_juice()
 		candynum+=1
 		PAD_SPEED+=100
 		DisplayValue+=10
+		var car = get_node("explosive").duplicate()
+		car.position = get_node("bottle").position # use set_translation() if you are in 3D
+		add_child(car) # parent could be whatever node in the scene that you want the car to be child of
+		car.emitting = true
 		bott_pos.x = randi()%int(screen_size.x) +1
 		bott_pos.y = randi()%int(screen_size.y) +1
 		get_node("bottle").set_position(bott_pos)
-	
+		temptimer = DisplayValue
+		
 	get_node("candyscore").bbcode_text = str(candynum)
 	get_node("Candytimer").bbcode_text =  str(DisplayValue)
 	if(waittime==0):
@@ -79,3 +88,5 @@ func _on_Timer_timeout():
 	DisplayValue+=-1;
 	waittime = 60
 	
+func update_juice():
+	pass
