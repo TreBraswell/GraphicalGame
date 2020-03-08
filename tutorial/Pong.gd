@@ -18,6 +18,13 @@ var temptimer =0
 onready var temp = get_node("explosive")
 var ex = false
 var bounceSFX
+onready var ki = get_node("kid")
+onready var fiery = ki.get_node("fiery")
+onready var explosive = get_node("explosive")
+var duration = 0.2
+var frequency = 15
+var amplitude = 16
+var priority = 0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -59,7 +66,7 @@ func _process(delta):
 		
 	get_node("kid").set_position(left_pos)
 	if(left_rect.has_point(bott_pos)):
-		get_node("ScreenShake").start()
+		
 		update_juice()
 		candynum+=1
 		PAD_SPEED+=100
@@ -89,4 +96,16 @@ func _on_Timer_timeout():
 	waittime = 60
 	
 func update_juice():
-	pass
+	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)
+	#fire variables
+	fiery.get_process_material().set_emission_box_extents(Vector3(fiery.get_process_material().get_emission_box_extents().x,fiery.get_process_material().get_emission_box_extents().y+.1,fiery.get_process_material().get_emission_box_extents().z))
+	fiery.set_amount(fiery.get_amount()+1)
+	fiery.set_lifetime(fiery.get_lifetime()+.025)
+	#fiery.get_process_material().set_param((fiery.get_process_material().get_param()+1))
+	#explosive variables
+	explosive.set_amount(explosive.get_amount()+20)
+	#screen shake
+	frequency = frequency + .005
+	amplitude = amplitude +1
+	priority = priority+ 1
+	get_node("ScreenShake").start(duration,frequency,amplitude,priority)
