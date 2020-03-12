@@ -106,10 +106,10 @@ func _on_Timer_timeout():
 	
 func update_juice():
 	#update pitch
-	boom.set_volume_db(boom.get_volume_db()+.05)
+	boom.set_volume_db(boom.get_volume_db()+.005)
 	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.005)
 	#wait time
-	updatewait = updatewait -.2
+	updatewait = updatewait -.5
 	#sets the width of the line
 	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)
 	#fire variables

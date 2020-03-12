@@ -51,6 +51,6 @@ margin_right = 796.0
 margin_bottom = 544.0
 
 [node name="Sprite" type="Sprite" parent="title_screen"]
-position = Vector2( 553.251, 173.933 )
+position = Vector2( 629.784, 173.933 )
 scale = Vector2( 1.60227, 1.50076 )
 texture = ExtResource( 4 )
