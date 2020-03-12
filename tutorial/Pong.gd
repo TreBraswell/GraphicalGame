@@ -12,8 +12,8 @@ var INITIAL_PLAYER_SPEED = 80
 var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
-var waittime = 15
-var updatewait = 15
+var waittime = 30
+var updatewait = 30
 var ball_speed = INTIAL_BALL_SPEED
 var temptimer =0
 onready var temp = get_node("explosive")
@@ -74,7 +74,7 @@ func _process(delta):
 		update_juice()
 		boom.play()
 		candynum+=1
-		PAD_SPEED+=100
+		PAD_SPEED+=25
 		DisplayValue+=8
 		var car = get_node("explosive").duplicate()
 		car.position = get_node("bottle").position # use set_translation() if you are in 3D
@@ -92,7 +92,7 @@ func _process(delta):
 	get_node("candyscore").bbcode_text = "Soda's collected : "+str(candynum)
 	get_node("Candytimer").bbcode_text =  "Time before Soda Crash : "+str(DisplayValue)
 	if(waittime==0):
-		waittime=15;
+		waittime=60;
 		DisplayValue+=-1;
 		
 		if(DisplayValue==0):
@@ -106,8 +106,8 @@ func _on_Timer_timeout():
 	
 func update_juice():
 	#update pitch
-	boom.set_volume_db(boom.get_volume_db()+.5)
-	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.01)
+	boom.set_volume_db(boom.get_volume_db()+.05)
+	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.005)
 	#wait time
 	updatewait = updatewait -.2
 	#sets the width of the line
@@ -126,7 +126,7 @@ func update_juice():
 	#sets amount
 	explosive.set_amount(explosive.get_amount()+20)
 	#screen shake
-	frequency = frequency + .005
+	frequency = frequency + .002
 	amplitude = amplitude +2
 	priority = priority+ 1
 	get_node("ScreenShake").start(duration,frequency,amplitude,priority)
