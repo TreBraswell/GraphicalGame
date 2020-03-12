@@ -7,13 +7,14 @@ var p1Score = 0
 var p2Score = 0
 var candynum = 0
 var DisplayValue = 30
+var wait = 60
 onready var timer = get_node("Timer")
 var INITIAL_PLAYER_SPEED = 80
 var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
 var waittime = 30
-var updatewait = 60
+var updatewait = 2
 var ball_speed = INTIAL_BALL_SPEED
 var temptimer =0
 onready var temp = get_node("explosive")
@@ -28,6 +29,8 @@ var duration = 0.2
 var frequency = 15
 var amplitude = 16
 var priority = 0
+var i =1;
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -92,7 +95,7 @@ func _process(delta):
 	get_node("candyscore").bbcode_text = "Soda's collected : "+str(candynum)
 	get_node("Candytimer").bbcode_text =  "Time before Soda Crash : "+str(DisplayValue)
 	if(waittime<=0):
-		waittime=updatewait;
+		waittime=30;
 		DisplayValue+=-1;
 
 		if(DisplayValue<=0):
@@ -109,7 +112,7 @@ func update_juice():
 	boom.set_volume_db(boom.get_volume_db()+.005)
 	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.005)
 	#wait time
-	updatewait = updatewait -.5
+	updatewait = updatewait * 1.5
 	#sets the width of the line
 	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)
 	#fire variables
