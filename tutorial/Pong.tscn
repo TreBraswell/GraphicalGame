@@ -1830,6 +1830,7 @@ volume_db = -5.0
 
 [node name="soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+volume_db = -19.0
 autoplay = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="ScreenShake/Frequency" to="ScreenShake" method="_on_Frequency_timeout"]

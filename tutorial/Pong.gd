@@ -13,7 +13,7 @@ var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
 var waittime = 30
-var updatewait = 30
+var updatewait = 1
 var ball_speed = INTIAL_BALL_SPEED
 var temptimer =0
 onready var temp = get_node("explosive")
@@ -109,7 +109,7 @@ func update_juice():
 	boom.set_volume_db(boom.get_volume_db()+.005)
 	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.005)
 	#wait time
-	updatewait = updatewait -.5
+	updatewait = updatewait +.5
 	#sets the width of the line
 	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)
 	#fire variables
