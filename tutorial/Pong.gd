@@ -6,17 +6,20 @@ var direction = Vector2(1.0,0.0)
 var p1Score = 0
 var p2Score = 0
 var candynum = 0
-var DisplayValue = 50
+var DisplayValue = 30
 onready var timer = get_node("Timer")
 var INITIAL_PLAYER_SPEED = 80
 var player_speed = INITIAL_PLAYER_SPEED
 var INTIAL_BALL_SPEED = 80
 var PAD_SPEED = 150
-var waittime = 30
+var waittime = 15
+var updatewait = 15
 var ball_speed = INTIAL_BALL_SPEED
 var temptimer =0
 onready var temp = get_node("explosive")
 var ex = false
+onready var boom = get_node("boom")
+onready var soundtrack = get_node("soundtrack")
 var bounceSFX
 onready var ki = get_node("kid")
 onready var fiery = ki.get_node("fiery")
@@ -32,6 +35,7 @@ var priority = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	soundtrack.play()
 	screen_size = get_viewport_rect().size
 	pad_size = get_node("kid").get_texture().get_size()
 	bounceSFX = get_node("Bounce")
@@ -68,44 +72,59 @@ func _process(delta):
 	if(left_rect.has_point(bott_pos)):
 		
 		update_juice()
+		boom.play()
 		candynum+=1
 		PAD_SPEED+=100
-		DisplayValue+=10
+		DisplayValue+=8
 		var car = get_node("explosive").duplicate()
 		car.position = get_node("bottle").position # use set_translation() if you are in 3D
 		add_child(car) # parent could be whatever node in the scene that you want the car to be child of
 		car.emitting = true
-		bott_pos.x = randi()%int(screen_size.x) +1
-		bott_pos.y = randi()%int(screen_size.y) +1
+		print(screen_size.x)
+		print(screen_size.y)
+		bott_pos.x = randi()%int(screen_size.x-300) +1
+		bott_pos.y = randi()%int(screen_size.y-200) +1
+		print(bott_pos.x)
+		print(bott_pos.y)
 		get_node("bottle").set_position(bott_pos)
 		temptimer = DisplayValue
 		
-	get_node("candyscore").bbcode_text = str(candynum)
-	get_node("Candytimer").bbcode_text =  str(DisplayValue)
+	get_node("candyscore").bbcode_text = "Soda's collected : "+str(candynum)
+	get_node("Candytimer").bbcode_text =  "Time before Soda Crash : "+str(DisplayValue)
 	if(waittime==0):
-		waittime=30;
+		waittime=15;
 		DisplayValue+=-1;
 		
 		if(DisplayValue==0):
-			DisplayValue = 60
+			get_tree().change_scene("res://gameover.tscn")
 		
 
 
 func _on_Timer_timeout():
 	DisplayValue+=-1;
-	waittime = 60
+	waittime = updatewait
 	
 func update_juice():
+	updatewait = updatewait -.2
+	#sets the width of the line
 	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)
 	#fire variables
+	#gets the size of the box and extends the width its rotated so thats why its y
 	fiery.get_process_material().set_emission_box_extents(Vector3(fiery.get_process_material().get_emission_box_extents().x,fiery.get_process_material().get_emission_box_extents().y+.1,fiery.get_process_material().get_emission_box_extents().z))
+	#changes the amount of fire objects
 	fiery.set_amount(fiery.get_amount()+1)
+	#sets how high it gets
 	fiery.set_lifetime(fiery.get_lifetime()+.025)
-	#fiery.get_process_material().set_param((fiery.get_process_material().get_param()+1))
+	print_debug(fiery.get_process_material().get_param(8))
+	#sets scale / how large
+	fiery.get_process_material().set_param(8,fiery.get_process_material().get_param(8)+.1)
 	#explosive variables
+	#sets amount
 	explosive.set_amount(explosive.get_amount()+20)
 	#screen shake
 	frequency = frequency + .005
-	amplitude = amplitude +1
+	amplitude = amplitude +2
 	priority = priority+ 1
 	get_node("ScreenShake").start(duration,frequency,amplitude,priority)
+	#bottle node/aura
+	get_node("bottle").get_node("aura").get_process_material().set_param(8,get_node("bottle").get_node("aura").get_process_material().get_param(8)+.5)

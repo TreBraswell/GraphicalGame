@@ -71,7 +71,6 @@ func _init():
 		gradient.set_color(1, default_color)
 
 func _notification(p_what: int):
-	print("notification")
 	match p_what:
 		NOTIFICATION_PARENTED:
 			self.target_path = target_path

@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://bottle.gd" type="Script" id=1]
-[ext_resource path="res://Pong Remake Assets/Futura Std Medium Condensed - Copy.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://bedroom.png" type="Texture" id=3]
+[ext_resource path="res://bitfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://explosion.wav" type="AudioStream" id=3]
 [ext_resource path="res://CherryPop.png" type="Texture" id=4]
 [ext_resource path="res://Pong.gd" type="Script" id=5]
 [ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
@@ -11,29 +11,32 @@
 [ext_resource path="res://trail.tscn" type="PackedScene" id=9]
 [ext_resource path="res://kid.gd" type="Script" id=10]
 [ext_resource path="res://bar.png" type="Texture" id=11]
+[ext_resource path="res://Pixelbroidery-0n0G.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Screenshot (89).png" type="Texture" id=13]
+[ext_resource path="res://untitled.wav" type="AudioStream" id=14]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
+[sub_resource type="DynamicFont" id=21]
+font_data = ExtResource( 12 )
 
-[sub_resource type="CanvasItemMaterial" id=19]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-[sub_resource type="Gradient" id=20]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.00301659, 0.244344, 0.488688 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0.415686, 0, 1, 0.921569, 0.501961, 0.34902, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0.32549, 0, 1, 0.921569, 0.482353, 0.34902, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.381818 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=8]
 lifetime_randomness = 1.0
 emission_shape = 2
 emission_box_extents = Vector3( 5, 5, 1 )
@@ -48,16 +51,13 @@ orbit_velocity_random = 0.0
 linear_accel = 25.0
 angle = 45.0
 scale = 5.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+hue_variation = 1.0
+hue_variation_random = 1.0
 
-[sub_resource type="Curve" id=7]
-min_value = -200.0
-max_value = 200.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="DynamicFont" id=22]
+font_data = ExtResource( 12 )
 
 [sub_resource type="Curve" id=9]
 min_value = -200.0
@@ -75,7 +75,15 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="CurveTexture" id=12]
 curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="Curve" id=13]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
 lifetime_randomness = 1.0
 flag_disable_z = true
 direction = Vector3( 5, 5, 0 )
@@ -90,13 +98,13 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 1.0
 linear_accel_random = 1.0
-linear_accel_curve = SubResource( 8 )
+linear_accel_curve = SubResource( 10 )
 radial_accel = 9.45
 radial_accel_random = 1.0
-radial_accel_curve = SubResource( 10 )
+radial_accel_curve = SubResource( 12 )
 tangential_accel = 7.87
 tangential_accel_random = 1.0
-tangential_accel_curve = SubResource( 12 )
+tangential_accel_curve = SubResource( 14 )
 damping = 100.0
 damping_random = 1.0
 angle = 720.0
@@ -107,23 +115,23 @@ color = Color( 1, 0, 0, 1 )
 hue_variation = -1.0
 hue_variation_random = 1.0
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=16]
 min_value = -360.0
 max_value = 360.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
-
-[sub_resource type="Curve" id=16]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=17]
 curve = SubResource( 16 )
 
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=20]
 lifetime_randomness = 1.0
-trail_size_modifier = SubResource( 17 )
+trail_size_modifier = SubResource( 19 )
 emission_shape = 1
 emission_sphere_radius = 22.53
 flag_disable_z = true
@@ -135,7 +143,7 @@ initial_velocity = 4.0
 initial_velocity_random = 1.0
 angular_velocity = 4.0
 angular_velocity_random = 1.0
-angular_velocity_curve = SubResource( 15 )
+angular_velocity_curve = SubResource( 17 )
 orbit_velocity = 1.0
 orbit_velocity_random = 0.0
 linear_accel = 1.0
@@ -144,19 +152,25 @@ radial_accel = 1.0
 radial_accel_random = 1.0
 scale = 4.0
 scale_random = 0.5
-color = Color( 0, 0.415686, 1, 1 )
+color = Color( 0, 0.179688, 1, 1 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
 [node name="pong_game (root)" type="Node2D"]
+position = Vector2( 311.273, 154.501 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="Candytimer" type="RichTextLabel" parent="."]
-margin_left = 47.3867
-margin_top = 7.85052
+margin_left = 47.387
+margin_top = -132.979
 margin_right = 361.387
-margin_bottom = 47.8505
-custom_fonts/normal_font = SubResource( 1 )
+margin_bottom = -92.979
+custom_fonts/mono_font = ExtResource( 2 )
+custom_fonts/bold_italics_font = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,15 +180,15 @@ position = Vector2( 109.284, 71.9054 )
 scale = Vector2( 1.16164, 1.69205 )
 texture = ExtResource( 8 )
 script = ExtResource( 10 )
-wrapArea = Rect2( 0, 0, 1024, 600 )
+wrapArea = Rect2( 0, 0, 1280, 720 )
 
 [node name="Line2D" parent="kid" instance=ExtResource( 9 )]
 show_behind_parent = true
-material = SubResource( 19 )
+material = SubResource( 2 )
 points = PoolVector2Array( 0.494476, -4.05659 )
 width = 4.0
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 20 )
+gradient = SubResource( 3 )
 texture = ExtResource( 11 )
 texture_mode = 2
 
@@ -185,13 +199,14 @@ rotation = -1.5708
 amount = 20
 lifetime = 0.25
 speed_scale = 1.5
-process_material = SubResource( 6 )
+process_material = SubResource( 8 )
 
 [node name="candyscore" type="RichTextLabel" parent="."]
 margin_left = 323.708
-margin_top = 3.99998
+margin_top = -132.979
 margin_right = 632.708
-margin_bottom = 44.0
+margin_bottom = -92.979
+custom_fonts/normal_font = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -211,7 +226,7 @@ one_shot = true
 preprocess = 1.0
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource( 13 )
+process_material = SubResource( 15 )
 
 [node name="bottle" type="Sprite" parent="."]
 position = Vector2( 433.818, 63.8441 )
@@ -225,7 +240,7 @@ amount = 50
 speed_scale = 1.5
 explosiveness = 0.12
 randomness = 1.0
-process_material = SubResource( 18 )
+process_material = SubResource( 20 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -239,12 +254,6 @@ margin_bottom = 36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="bedroom" type="Sprite" parent="."]
-position = Vector2( 319.123, 206.198 )
-scale = Vector2( 1.98588, 2.0333 )
-z_index = -100
-texture = ExtResource( 3 )
 
 [node name="ScreenShake" type="Node2D" parent="."]
 position = Vector2( 328.058, 205.487 )
@@ -261,6 +270,1566 @@ one_shot = true
 [node name="maincamera" type="Camera2D" parent="ScreenShake"]
 position = Vector2( -3.87704, 2.5847 )
 current = true
+
+[node name="carpet" type="Sprite" parent="."]
+modulate = Color( 0.721569, 0.376471, 0.376471, 1 )
+show_behind_parent = true
+position = Vector2( -168.1, -103.148 )
+scale = Vector2( 0.194191, 0.197601 )
+z_index = -100
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet"]
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite7" type="Sprite" parent="carpet"]
+position = Vector2( -512.382, 0 )
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite7"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite7/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite7/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite7"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite7/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite7"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite7"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite8" type="Sprite" parent="carpet"]
+position = Vector2( -512.382, 496.116 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite8"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite8/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite8"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite8"]
+position = Vector2( 0, 500.529 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite8/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite8/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite8/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite8/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite9" type="Sprite" parent="carpet"]
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite9"]
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite9/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite7" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( -512.382, 0 )
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite9/Sprite7"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite7"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite7"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite7"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite8" type="Sprite" parent="carpet/Sprite9"]
+position = Vector2( -512.382, 496.116 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite9/Sprite8"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite8"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite9/Sprite8"]
+position = Vector2( 0, 500.529 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite10" type="Sprite" parent="carpet"]
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite10"]
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite7" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( -512.382, 0 )
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite7"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite7"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite7"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite7"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite8" type="Sprite" parent="carpet/Sprite10"]
+position = Vector2( -512.382, 496.116 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite8"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite8"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite10/Sprite8"]
+position = Vector2( 0, 500.529 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite8/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite9" type="Sprite" parent="carpet/Sprite10"]
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 0, 1500 )
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite9" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 0, 2000 )
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite9"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite10" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 0, 2500 )
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite10"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite11" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 0, 3000 )
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite11"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite12" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 0, 3500 )
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite12"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite7" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( -512.382, 0 )
+rotation = 1.5708
+scale = Vector2( 0.982744, 1.01756 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite7"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite8" type="Sprite" parent="carpet/Sprite10/Sprite9"]
+position = Vector2( -512.382, 496.116 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8"]
+position = Vector2( 0, 500.529 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 4019.32, 0 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite5"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 2008.57, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite4/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite4"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 1004.92, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6/Sprite3"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="Sprite2" type="Sprite" parent="carpet/Sprite10/Sprite9/Sprite8/Sprite6"]
+position = Vector2( 502.322, 0.00219727 )
+texture = ExtResource( 13 )
+
+[node name="boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="ScreenShake/Frequency" to="ScreenShake" method="_on_Frequency_timeout"]
 [connection signal="timeout" from="ScreenShake/Duration" to="ScreenShake" method="_on_Duration_timeout"]

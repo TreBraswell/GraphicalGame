@@ -21,8 +21,14 @@ _global_script_class_icons={
 [application]
 
 config/name="tutorial"
-run/main_scene="res://Pong.tscn"
+run/main_scene="res://main_menu.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
 
 [input]
 
@@ -59,4 +65,5 @@ p2_move_down={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.14902, 0.192157, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"
