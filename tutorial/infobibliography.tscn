@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://bitfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://returntosignal.gd" type="Script" id=2]
+[ext_resource path="res://Pixelbroidery-0n0G.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="infobibliography" type="Node2D"]
 position = Vector2( 5.57904, 11.158 )
@@ -17,26 +21,62 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 12.3033
+margin_top = -6.15161
+margin_right = 1281.3
+margin_bottom = 628.848
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
-margin_right = 633.0
-margin_bottom = 100.0
+margin_top = 24.0
+margin_right = 1269.0
+margin_bottom = 707.0
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer"]
-margin_right = 633.0
-margin_bottom = 45.0
+margin_right = 1269.0
+margin_bottom = 285.0
 custom_fonts/font = ExtResource( 1 )
-text = "INFO AND BIBLIOGRAPHY"
+text = "INFO AND BIBLIOGRAPHY
+controls wasd for basic movement. Plot: You are a child who
+loves sugar and is currently on a sugar high. Yet if he
+losses too much sugar power he will crash. Keep collecting
+soda to stop this from happening.
+"
+align = 1
+
+[node name="Label2" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+margin_top = 289.0
+margin_right = 1269.0
+margin_bottom = 628.0
+custom_fonts/font = SubResource( 1 )
+text = "https://www.youtube.com/watch?v=Fy0aCDmgnxg
+https://github.com/willnationsdev/godot-next
+https://www.youtube.com/watch?v=QUxyI33AFNo
+https://www.youtube.com/watch?v=_DAvzzJMko8
+https://github.com/sp33dy/Godot-v3-Tutorials-Competent/blob/master/Screen%20Wrap%20Sprite/SpriteScreenWrap/SpriteScreenWrap.gd
+https://www.fontspace.com/category/8-bit
+https://youtu.be/sKuM5AzK-uA
+https://www.shutterstock.com/image-vector/colored-embroidery-border-ethnic-ukrainian-ornament-1186338415
+https://opengameart.org/content/explosion-0
+https://opengameart.org/content/neocrey-fractal
+
+
+
+
+
+
+
+
+"
 align = 1
 
 [node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer"]
-margin_top = 49.0
-margin_right = 633.0
-margin_bottom = 100.0
+margin_top = 632.0
+margin_right = 1269.0
+margin_bottom = 683.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK TO MAIN MENU"
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
