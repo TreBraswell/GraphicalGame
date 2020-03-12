@@ -15,7 +15,7 @@
 [ext_resource path="res://Screenshot (89).png" type="Texture" id=13]
 [ext_resource path="res://untitled.wav" type="AudioStream" id=14]
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 12 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
@@ -56,34 +56,34 @@ color_ramp = SubResource( 5 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 12 )
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=10]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="Curve" id=11]
+[sub_resource type="Curve" id=12]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=12]
-curve = SubResource( 11 )
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=14]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=16]
 lifetime_randomness = 1.0
 flag_disable_z = true
 direction = Vector3( 5, 5, 0 )
@@ -98,13 +98,13 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 1.0
 linear_accel_random = 1.0
-linear_accel_curve = SubResource( 10 )
+linear_accel_curve = SubResource( 11 )
 radial_accel = 9.45
 radial_accel_random = 1.0
-radial_accel_curve = SubResource( 12 )
+radial_accel_curve = SubResource( 13 )
 tangential_accel = 7.87
 tangential_accel_random = 1.0
-tangential_accel_curve = SubResource( 14 )
+tangential_accel_curve = SubResource( 15 )
 damping = 100.0
 damping_random = 1.0
 angle = 720.0
@@ -115,23 +115,23 @@ color = Color( 1, 0, 0, 1 )
 hue_variation = -1.0
 hue_variation_random = 1.0
 
-[sub_resource type="Curve" id=16]
+[sub_resource type="Curve" id=17]
 min_value = -360.0
 max_value = 360.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=17]
-curve = SubResource( 16 )
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 17 )
 
-[sub_resource type="Curve" id=18]
+[sub_resource type="Curve" id=19]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=19]
-curve = SubResource( 18 )
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
 
-[sub_resource type="ParticlesMaterial" id=20]
+[sub_resource type="ParticlesMaterial" id=21]
 lifetime_randomness = 1.0
-trail_size_modifier = SubResource( 19 )
+trail_size_modifier = SubResource( 20 )
 emission_shape = 1
 emission_sphere_radius = 22.53
 flag_disable_z = true
@@ -143,7 +143,7 @@ initial_velocity = 4.0
 initial_velocity_random = 1.0
 angular_velocity = 4.0
 angular_velocity_random = 1.0
-angular_velocity_curve = SubResource( 17 )
+angular_velocity_curve = SubResource( 18 )
 orbit_velocity = 1.0
 orbit_velocity_random = 0.0
 linear_accel = 1.0
@@ -170,7 +170,7 @@ margin_right = 361.387
 margin_bottom = -92.979
 custom_fonts/mono_font = ExtResource( 2 )
 custom_fonts/bold_italics_font = ExtResource( 2 )
-custom_fonts/normal_font = SubResource( 21 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -206,7 +206,7 @@ margin_left = 323.708
 margin_top = -132.979
 margin_right = 632.708
 margin_bottom = -92.979
-custom_fonts/normal_font = SubResource( 22 )
+custom_fonts/normal_font = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -226,7 +226,7 @@ one_shot = true
 preprocess = 1.0
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource( 15 )
+process_material = SubResource( 16 )
 
 [node name="bottle" type="Sprite" parent="."]
 position = Vector2( 435.799, 62.5237 )
@@ -240,7 +240,7 @@ amount = 50
 speed_scale = 1.5
 explosiveness = 0.12
 randomness = 1.0
-process_material = SubResource( 20 )
+process_material = SubResource( 21 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
