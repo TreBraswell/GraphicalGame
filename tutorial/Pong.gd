@@ -82,7 +82,7 @@ func _process(delta):
 		car.emitting = true
 		print(screen_size.x)
 		print(screen_size.y)
-		bott_pos.x = randi()%int(screen_size.x-300) +1
+		bott_pos.x = randi()%int(screen_size.x-310) +1
 		bott_pos.y = randi()%int(screen_size.y-200) +1
 		print(bott_pos.x)
 		print(bott_pos.y)
@@ -105,6 +105,10 @@ func _on_Timer_timeout():
 	waittime = updatewait
 	
 func update_juice():
+	#update pitch
+	boom.set_volume_db(boom.get_volume_db()+.5)
+	soundtrack.set_pitch_scale(soundtrack.get_pitch_scale()+.01)
+	#wait time
 	updatewait = updatewait -.2
 	#sets the width of the line
 	ki.get_node("Line2D").set_width(ki.get_node("Line2D").get_width()+1)

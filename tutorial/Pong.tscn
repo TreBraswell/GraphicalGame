@@ -3,7 +3,7 @@
 [ext_resource path="res://bottle.gd" type="Script" id=1]
 [ext_resource path="res://bitfont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://explosion.wav" type="AudioStream" id=3]
-[ext_resource path="res://CherryPop.png" type="Texture" id=4]
+[ext_resource path="res://potions.png" type="Texture" id=4]
 [ext_resource path="res://Pong.gd" type="Script" id=5]
 [ext_resource path="res://Pong Remake Assets/bump.wav" type="AudioStream" id=6]
 [ext_resource path="res://ScreenShake.gd" type="Script" id=7]
@@ -229,8 +229,8 @@ randomness = 1.0
 process_material = SubResource( 15 )
 
 [node name="bottle" type="Sprite" parent="."]
-position = Vector2( 433.818, 63.8441 )
-scale = Vector2( 1.05902, 1.49126 )
+position = Vector2( 435.799, 62.5237 )
+scale = Vector2( 1.25708, 1.6233 )
 texture = ExtResource( 4 )
 script = ExtResource( 1 )
 
@@ -1826,6 +1826,7 @@ texture = ExtResource( 13 )
 
 [node name="boom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -5.0
 
 [node name="soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
