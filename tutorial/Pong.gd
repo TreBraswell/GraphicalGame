@@ -91,7 +91,7 @@ func _process(delta):
 		
 	get_node("candyscore").bbcode_text = "Soda's collected : "+str(candynum)
 	get_node("Candytimer").bbcode_text =  "Time before Soda Crash : "+str(DisplayValue)
-	if(waittime==0):
+	if(waittime<=0):
 		waittime=60;
 		DisplayValue+=-1;
 		
